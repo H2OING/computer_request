@@ -43,11 +43,17 @@ cd your-repository
 ### Setting up the Frontend (Angular)
 
 Navigate to the frontend directory:
+
 cd angularclient
+
 Install the required dependencies:
+
 npm install
+
 Start the Angular development server:
+
 ng serve
+
 The Angular application will be available at http://localhost:4200
 
 ### Setting up the Backend (Spring Boot)
@@ -56,9 +62,11 @@ Open the backend project in your preferred Java IDE (Eclipse, IntelliJ, etc.).
 Configure the application properties or YAML file with your database settings and other necessary configurations.
 
 Build the project:
+
 mvn clean install
 
 Run the Spring Boot application:
+
 mvn spring-boot:run
 
 The backend API will be accessible at http://localhost:8080
