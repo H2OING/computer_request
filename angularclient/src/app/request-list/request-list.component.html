@@ -1,0 +1,38 @@
+<div class="card my-5" style="background-color: #ffffff; border-radius: 10px;">
+    <div class="table-div">
+        <table #requestTable>
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="max-width: 120px">Equipment</th>
+                <th scope="col" style="max-width: 200px" class="reason-column">Reason</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created at</th>
+                <th style="min-width: 200px"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let request of requests">
+                <td>{{ request.idReq }}</td>
+                <td>{{ request.equipment }}</td>
+                <td>{{ request.reason }}</td>
+                <td>{{ request.amount }}</td>
+                <td>
+                        <span [ngClass]="{
+                            'rounded-yellow': request.status === 'ON HOLD',
+                            'green': request.status === 'ACCEPTED',
+                            'red': request.status === 'DECLINED'
+                        }">{{ request.status }}</span>
+                </td>
+                <td style="max-width: 110px">{{ request.created_at | date:'MM/dd/yyyy HH:mm' }}</td>
+                <td>
+                    <button class="Btn-Edit" (click)="acceptRequest(request.idReq)" *ngIf="request.status === 'ON HOLD'">Accept</button>
+                    <button class="Btn-Decline" (click)="declineRequest(request.idReq)" *ngIf="request.status === 'ON HOLD'">Decline</button>
+                    <button class="Btn-Delete" (click)="deleteRequest(request.idReq)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="card my-5" style="background-color: #ffffff; border-radius: 10px;">
+  <div class="table-div">
+    <table>
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Type</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Updated at</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let equipment of equipments">
+        <td>{{ equipment.idEq }}</td>
+        <td>{{ equipment.equipmentType }}</td>
+        <td>{{ equipment.name }}</td>
+        <td style="max-width: 200px">{{ equipment.description }}</td>
+        <td>{{ equipment.quantity }}</td>
+        <td>{{ equipment.updated_at | date:'MM/dd/yyyy HH:mm' }}</td>
+        <td>
+          <button class="Btn-Edit"(click)="openEditEquipmentDialog(equipment.idEq)">Edit</button>
+          <button class="Btn-Delete"(click)="deleteEquipment(equipment.idEq)">Delete</button>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="card my-5" style="border: 0px">
+  <div class="form-div">
+    <form [formGroup]="equipmentForm" (ngSubmit)="onSubmit()">
+      <h1 style="color: white">New Request</h1>
+      <div class="form-elements" >
+        <label>Equipment Type</label>
+        <select formControlName="equipmentType" class="form-control" required (change)="onEquipmentTypeChange()">
+          <option value="" disabled>Select Equipment Type</option>
+          <option *ngFor="let type of equipmentTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="form-elements" >
+        <label>Select Equipment</label>
+        <select formControlName="selectedEquipment" class="form-control" required [(ngModel)]="request.equipment">
+          <option value="" disabled>Select Equipment</option>
+          <option *ngFor="let equipment of equipmentList" [value]="equipment.name">{{ equipment.name }}</option>
+        </select>
+      </div>
+      <div class="form-group form-elements" >
+        <label for="reason" style="flex: 1;">Reason</label>
+        <input type="text" formControlName="reason"
+               class="form-control"
+               id="reason"
+               name="reason"
+               placeholder="Enter reason"
+               required>
+        <div *ngIf="equipmentForm.get('reason')?.hasError('required') && equipmentForm.get('reason')?.touched" class="alert alert-danger">Reason is required</div>
+      </div>
+      <div class="form-group form-elements">
+        <label for="amount" style="flex: 1;">Amount</label>
+        <input type="number" formControlName="amount"
+               class="form-control"
+               id="amount"
+               name="amount"
+               placeholder="Enter amount"
+               required>
+        <div *ngIf="equipmentForm.get('amount')?.hasError('required') && equipmentForm.get('amount')?.touched" class="alert alert-danger">Amount is required</div>
+      </div>
+
+      <button type="submit" [disabled]="!equipmentForm.valid" class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>

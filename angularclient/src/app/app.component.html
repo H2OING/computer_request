@@ -1,0 +1,40 @@
+<div class="content" role="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-white my-10" style="border: 0px">
+          <div class="card-body">
+            <h2 class="card-title text-center text-black py-3">{{ title }}</h2>
+            <ul class="text-center list-inline py-1">
+              <li class="d-inline-block mx-3">
+                <button
+                  (click)="setCurrentView('request')"
+                  [ngClass]="{ 'active-button': currentView === 'request', 'inactive-button': currentView !== 'request' }"
+                >
+                  Requests
+                </button>
+              </li>
+              <li class="d-inline-block mx-3">
+                <button
+                  (click)="setCurrentView('equipment')"
+                  [ngClass]="{ 'active-button': currentView === 'equipment', 'inactive-button': currentView !== 'equipment' }"
+                >
+                  Equipments
+                </button>
+              </li>
+            </ul>
+
+            <div *ngIf="currentView === 'request'" [@fadeInOut]>
+              <app-request-list></app-request-list>
+              <app-request-form></app-request-form>
+            </div>
+            <div *ngIf="currentView === 'equipment'" [@fadeInOut]>
+              <app-equipment-list></app-equipment-list>
+              <app-equipment-form></app-equipment-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
